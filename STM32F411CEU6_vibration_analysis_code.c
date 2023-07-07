@@ -348,12 +348,11 @@ void IMU_Read_Accel(void) {
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim) {
 
-	// This timer should trigger every second at first and then at every 0.00 1s for the final part of this experiment
+	// This timer should trigger every second at first and then at every 0.001s for the final part of this experiment
 
 	if (htim->Instance == TIM2) {
 		IMU_Read_Accel();
 		snprintf(Buff, BUFF_SIZE, "%.4f,%.4f,%.4f\r\n", Ax, Ay, Az); // each %.4f = 8bytes
-		//snprintf(Buff, BUFF_SIZE, "%.4f", Ax);
 		HAL_UART_Transmit(&huart1, (uint8_t*) Buff, strlen(Buff),
 		UART_TIMEOUT);
 	}
