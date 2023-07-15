@@ -23,7 +23,6 @@
 /* USER CODE BEGIN Includes */
 #include <string.h>
 #include <stdio.h>
-#include <stdlib.h>     /* atoi */
 #include <stdint.h>
 /* USER CODE END Includes */
 
@@ -40,15 +39,15 @@
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 #define I2C_TIMEOUT					1000
-#define UART_TIMEOUT				1000
+#define UART_TIMEOUT					1000
 #define IMU_ADDR					0xD0 	// This value is the IMU address (0x68) shifted left by 1bit and then a zero
-//appended to the LSB (which represents the read operation
-#define ACCEL_XH_REG_ADDR			0x3B
-#define WHO_AM_I_REG				0x75
+								// appended to the LSB (which represents the read operation
+#define ACCEL_XH_REG_ADDR				0x3B
+#define WHO_AM_I_REG					0x75
 #define PWR_MGMT_1					0x6B
 #define SMPLRT_DIV					0x19
 #define GYRO_CONFIG					0x1B
-#define ACCEL_CONFIG				0x1C
+#define ACCEL_CONFIG					0x1C
 #define BUFF_SIZE					32
 
 /* USER CODE END PM */
@@ -61,16 +60,11 @@ TIM_HandleTypeDef htim2;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
-uint16_t count;
 uint8_t RegsBuffer[6];
 char Buff[BUFF_SIZE];
-char msgAx[] = "Ax = ";
-char msgAy[] = "Ay = ";
-char msgAz[] = "Az = ";
 int16_t Acc_X_RAW = 0;
 int16_t Acc_Y_RAW = 0;
 int16_t Acc_Z_RAW = 0;
-
 float Ax = 0;
 float Ay = 0;
 float Az = 0;
