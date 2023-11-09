@@ -2,7 +2,7 @@
 
 %% Conversion from txt to csv
 
-data = readmatrix('LavRapida_NvH20Alto_PesoNormal.txt');
+data = readmatrix('LavRapida_NvH20Baixo_PesoNormal.txt');
 
 %% Matrix N:1 samples
 
